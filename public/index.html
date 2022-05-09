@@ -1,17 +1,91 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<!--Head-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link rel="stylesheet" href="../src/index.css " />
+  <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+  <title>Sanguine</title>
+</head>
+
+<!--Body-->
+
+<body>
+
+  <div id="app" class="main_container">
+    <div class="nav-bar">
+      <ul>
+        <li> <button id="float-left" class="nav-button">Sanguine</button></li>
+        <li> <button id="float-left" class="nav-button">Sobre</button></li>
+        <li> <button id="float-left" class="nav-button">Duvidas</button></li>
+        <li> <button id="float-left" class="nav-button">Bancos</button></li>
+        <li> <button id="float-right" class="nav-button">Registrar</button></li>
+        <li> <button id="float-right" class="nav-button">Entrar</button></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="search-box">
+        <input type="text" class="input-search" placeholder="Digite aqui sua busca...">
+      </div>
+    </div>
+
+    <div class="container" style="display:flex;">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+
+    <div class="container" style="display:flex;">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+    <div class="container" style="display:flex;">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+
+
+    <!--Import app -->
+    <script src="../src/main.js"></script>
+
+    <!--Mount app -->
+    <script>
+      const mountedApp = app.mount('#app')
+    </script>
+  </div>
+</body>
+
+
+<!--Footer-->
+<footer class="footer-distributed">
+
+  <div class="footer-right">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+    <a href="#"><i class="fa fa-github"></i></a>
+  </div>
+
+  <div class="footer-left">
+    <p class="footer-links">
+      <a class="link-1" href="#">Sanguine</a>
+      <a href="#">Sobre</a>
+      <a href="#">Duvidas</a>
+      <a href="#">Bancos</a>
+      <a href="#">Registrar</a>
+      <a href="#">Contato</a>
+    </p>
+    <p>Sanguine &copy; 2022</p>
+  </div>
+
+</footer>
+
 </html>

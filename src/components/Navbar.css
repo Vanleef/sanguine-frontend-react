@@ -31,6 +31,15 @@
   max-width: 1500px;
 }
 
+
+.login-logo img {
+  width: 55px;
+  height: 55px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  filter: grayscale(30%);
+}
+
 .navbar-logo {
   color: #fff;
   justify-self: start;
@@ -63,7 +72,7 @@
 }
 
 .nav-links {
-  color: #fff;
+  color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -74,14 +83,12 @@
 .nav-links:hover {
   border-bottom: 4px solid #fff;
   transition: all 0.2s ease-out;
+  height: 65%;
+  margin-top: 5px
 }
 
 .fa-bars {
   color: #fff;
-}
-
-.nav-links-mobile {
-  display: none;
 }
 
 .menu-icon {
@@ -148,7 +155,7 @@
     font-size: 2rem;
   }
 
-  .nav-links-mobile {
+  .nav-enter {
     display: block;
     text-align: center;
     margin: 2rem auto;
@@ -163,9 +170,4 @@
     transition: all 0.3s ease-out;
   }
 
-  .nav-links-mobile:hover {
-    background: #fff;
-    color: #242424;
-    transition: 250ms;
-  }
 }

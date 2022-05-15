@@ -1,0 +1,25 @@
+body {
+    background: linear-gradient(to bottom, #fefefe, #b6b6b6);
+}
+
+.banco-container {
+    margin: auto;
+    margin-top: 250px;
+    width: 60%;
+    display: flex;
+    overflow: scroll;
+}
+
+.banco-itens {}
+
+.sangue-table {
+    margin: auto;
+    padding: 50px;
+
+}
+
+.sangue-item {
+    padding: 5px;
+}
+
+.card-banco {}

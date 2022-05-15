@@ -1,5 +1,5 @@
 .navbar {
-  background: #ce0000;
+  background: #4b4b4b;
   height: 60px;
   width: 100%;
   margin-bottom: 25px;
@@ -7,6 +7,9 @@
   position: fixed;
   top: 0;
   border-radius: 0 0 10px 10px;
+  border: 1px rgb(255, 255, 255);
+  border-style: none groove groove groove;
+  z-index: 1;
 }
 
 .nav-button {
@@ -72,23 +75,23 @@
 }
 
 .nav-links {
-  color: rgb(255, 255, 255);
+  color: #fff;
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  height: 100%;
+  margin-top: 20px;
+  padding-bottom: 5px;
 }
 
 .nav-links:hover {
-  border-bottom: 4px solid #fff;
-  transition: all 0.2s ease-out;
-  height: 65%;
-  margin-top: 5px
+  border-bottom: 2px solid #fff;
+  border-radius: 2px;
+  transition: all 0.5s ease-out;
+  margin-top: 22px;
 }
 
 .fa-bars {
-  color: #fff;
+  color: rgb(13, 194, 22);
 }
 
 .menu-icon {
@@ -120,24 +123,12 @@
     z-index: 1;
   }
 
-  .nav-links {
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-    display: table;
-  }
-
-  .nav-links:hover {
-    background-color: #fff;
-    color: #242424;
-    border-radius: 0;
-  }
-
   .navbar-logo {
     position: absolute;
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
+    border: 5px solid #000;
   }
 
   .menu-icon {

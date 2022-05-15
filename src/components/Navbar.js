@@ -32,11 +32,11 @@ function Navbar() {
         <div className='navbar-container'>
           <div className="login-logo">
             <img
-              src='/images/logo.jpg' alt="logo"
+              src='/images/logo.png' alt="logo"
             />
           </div>
 
-          <Link to='/' className='navbar-logo' src="images/logo.jpg" onClick={closeMobileMenu}>
+          <Link to='/' className='navbar-logo' src="images/logo.png" onClick={closeMobileMenu}>
 
             <i class='fab fa-typo3' />
           </Link>
@@ -60,7 +60,7 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/'
+                to='/bancos'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -69,9 +69,9 @@ function Navbar() {
             </li>
           </ul>
           <Link
-          to="/login"
+            to="/login"
           >
-          {button && <Button buttonStyle='btn--outline'>Entrar</Button>}
+            {button && <Button buttonStyle='btn--outline'>Entrar</Button>}
           </Link>
         </div>
       </nav>

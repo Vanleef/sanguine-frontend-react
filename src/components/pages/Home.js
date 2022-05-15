@@ -7,10 +7,9 @@ import Login from './Login';
 
 function Home() {
   return (
-     <>
-    <HeroSection />
-    <Cards />
-    <Footer />
+    <>
+      <HeroSection />
+      <Footer />
     </>
   );
 }

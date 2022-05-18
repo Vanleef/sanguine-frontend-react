@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import './Footer.css';
 import { Button } from './Button';
-import { Link } from 'react-router-dom';
 
 function Footer() {
 
@@ -26,9 +25,7 @@ function Footer() {
         <div className='footer-container'>
             <section className='footer-subscription'>
                 {button && <Button buttonStyle='btn--outline'>Registrar</Button>}
-                <p className='footer-subscription-heading'>
-                    {/* Registrar */}
-                </p>
+   
                 <p className='footer-subscription-text'>
                     Registre-se para acessar mais informações sobre os bancos de sangue mais próximos de você
                 </p>

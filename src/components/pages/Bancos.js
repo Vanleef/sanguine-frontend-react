@@ -178,7 +178,7 @@ const example = [
 
 const Bancos = () => {
     return (
-        <div className="banco-container">
+        <div className="banco-container" id="banco-scroll">
             {example.map((item) => {
                 return (
                     <CardItem
@@ -188,7 +188,6 @@ const Bancos = () => {
                     />
                 )
             })}
-
         </div>
 
     );
@@ -235,5 +234,15 @@ const SangueItens = ({ item }) => {
     )
 }
 
+
+const scrollContainer = document.getElementById("banco-scroll");
+
+if(scrollContainer){
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+    });
+}
 
 export default Bancos;

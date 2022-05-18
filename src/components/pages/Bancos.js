@@ -179,7 +179,7 @@ const example = [
 
 const Bancos = () => {
     return (
-        <div className="banco-container" id="banco-scroll">
+        <div className="banco-container" id="banco-container" onWheel={onWheel}>
             {example.map((item, index) => {
                 return (
                     <CardItem
@@ -213,6 +213,7 @@ const SangueItens = ({ item }) => {
     return (
         <div>
             <table className="sangue-table">
+            <tbody>
                 <tr>
                     <td className='sangue-item'>A+:{item['A+']}</td>
                     <td className='sangue-item'>A-:{item['A-']}</td>
@@ -230,6 +231,8 @@ const SangueItens = ({ item }) => {
                     <td className='sangue-item'>O-:{item['O-']}</td>
                 </tr>
                 
+                </tbody>
+
             </table>
             {console.log(item)}
         </div >
@@ -237,15 +240,15 @@ const SangueItens = ({ item }) => {
     )
 }
 
-
-const scrollContainer = document.getElementById("banco-scroll");
-
-if(scrollContainer){
-
-    scrollContainer.addEventListener("wheel", (evt) => {
-        evt.preventDefault();
-        scrollContainer.scrollLeft += evt.deltaY;
+const onWheel = e => {
+    e.preventDefault();
+    const bancoContainer = document.getElementById("banco-container");
+    const containerScrollPosition = document.getElementById("banco-container").scrollLeft;
+    bancoContainer.scrollTo({
+      top: 0,
+      left: containerScrollPosition + e.deltaY+20,
+      behaviour: "smooth"
     });
-}
+  };
 
 export default Bancos;

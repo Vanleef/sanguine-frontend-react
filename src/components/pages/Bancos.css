@@ -4,10 +4,10 @@ body {
 
 .banco-container {
     margin: auto;
-    margin-top: 250px;
+    margin-top: 150px;
+    margin-bottom: 50px;
     width: 60%;
     display: flex;
-    overflow-x: hidden;
     overflow-y: hidden;
 }
 

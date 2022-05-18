@@ -178,19 +178,42 @@ const example = [
 ]
 
 const Bancos = () => {
+    let estados = []
+    example.map((item) => {
+        if (!estados.includes(item.estado)) {
+            estados.push(item.estado)
+            console.log(estados)
+        }
+    })
+
+
     return (
-        <div className="banco-container" id="banco-container" onWheel={onWheel}>
-            {example.map((item, index) => {
-                return (
-                    <CardItem
-                    key={index}
-                    text={[<BancoItens item={item} />, <SangueItens item={item.sangue} />]}
-                    label={item.banco}
-                    path='/bancos'
-                    />
-                )
-            })}
-        </div>
+        <div>
+            <div class="dropdownBox" include="form-input-select()">
+                <select required>
+                    <option value="" hidden>Estado</option>
+
+                    {estados.forEach(function (estado, i) {
+                        { console.log(estado, i) }
+                        <option value={i}>{estado}</option>
+
+                    })}
+
+                </select>
+            </div>
+            <div id="banco-container" onWheel={onWheel}>
+                {example.map((item, index) => {
+                    return (
+                        <CardItem
+                            key={index}
+                            text={[<BancoItens item={item} />, <SangueItens item={item.sangue} />]}
+                            label={item.banco}
+                            path='/bancos'
+                        />
+                    )
+                })}
+            </div>
+        </div >
 
     );
 
@@ -203,7 +226,6 @@ const BancoItens = ({ item }) => {
             <h4>{item.cidade}</h4>
             <h5>{item.endereco}</h5>
             <h6>Sangue extraído em: {item.data_extracao}</h6>
-            {console.log(item)}
         </div>
     )
 }
@@ -213,28 +235,27 @@ const SangueItens = ({ item }) => {
     return (
         <div>
             <table className="sangue-table">
-            <tbody>
-                <tr>
-                    <td className='sangue-item'>A+:{item['A+']}</td>
-                    <td className='sangue-item'>A-:{item['A-']}</td>
-                </tr>
-                <tr>
-                    <td className='sangue-item'>AB+:{item['AB+']}</td>
-                    <td className='sangue-item'>AB-:{item['AB-']}</td>
-                </tr>
-                <tr>
-                    <td className='sangue-item'>B+:{item['B+']}</td>
-                    <td className='sangue-item'>B-:{item['B-']}</td>
-                </tr>
-                <tr>
-                    <td className='sangue-item'>O+:{item['O+']}</td>
-                    <td className='sangue-item'>O-:{item['O-']}</td>
-                </tr>
-                
+                <tbody>
+                    <tr>
+                        <td className='sangue-item'>A+:{item['A+']}</td>
+                        <td className='sangue-item'>A-:{item['A-']}</td>
+                    </tr>
+                    <tr>
+                        <td className='sangue-item'>AB+:{item['AB+']}</td>
+                        <td className='sangue-item'>AB-:{item['AB-']}</td>
+                    </tr>
+                    <tr>
+                        <td className='sangue-item'>B+:{item['B+']}</td>
+                        <td className='sangue-item'>B-:{item['B-']}</td>
+                    </tr>
+                    <tr>
+                        <td className='sangue-item'>O+:{item['O+']}</td>
+                        <td className='sangue-item'>O-:{item['O-']}</td>
+                    </tr>
+
                 </tbody>
 
             </table>
-            {console.log(item)}
         </div >
 
     )
@@ -245,10 +266,10 @@ const onWheel = e => {
     const bancoContainer = document.getElementById("banco-container");
     const containerScrollPosition = document.getElementById("banco-container").scrollLeft;
     bancoContainer.scrollTo({
-      top: 0,
-      left: containerScrollPosition + e.deltaY+20,
-      behaviour: "smooth"
+        top: 0,
+        left: containerScrollPosition + e.deltaY + 20,
+        behaviour: "smooth"
     });
-  };
+};
 
 export default Bancos;

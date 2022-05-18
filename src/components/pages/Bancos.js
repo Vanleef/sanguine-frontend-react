@@ -237,9 +237,12 @@ const SangueItens = ({ item }) => {
 
 const scrollContainer = document.getElementById("banco-scroll");
 
-scrollContainer.addEventListener("wheel", (evt) => {
-    evt.preventDefault();
-    scrollContainer.scrollLeft += evt.deltaY;
-});
+if(scrollContainer){
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+    });
+}
 
 export default Bancos;

@@ -30,9 +30,14 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-        
-          <Link to='/' className='navbar-logo' src="images/logo.jpg" onClick={closeMobileMenu}>
-          
+          <div className="login-logo">
+            <img
+              src='/images/logo.png' alt="logo"
+            />
+          </div>
+
+          <Link to='/' className='navbar-logo' src="images/logo.png" onClick={closeMobileMenu}>
+
             <i class='fab fa-typo3' />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
@@ -46,7 +51,7 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/services'
+                to='/'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -62,18 +67,12 @@ function Navbar() {
                 Bancos
               </Link>
             </li>
-
-            <li>
-              <Link
-                to='/sign-up'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Entrar
-              </Link>
-            </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>Entrar</Button>}
+          <Link
+            to="/login"
+          >
+            {button && <Button buttonStyle='btn--outline'>Entrar</Button>}
+          </Link>
         </div>
       </nav>
     </>

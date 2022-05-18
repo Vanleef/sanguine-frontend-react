@@ -1,12 +1,13 @@
 import React from 'react';
 import '../App.css';
-import { Button } from './Button';
 import './HeroSection.css';
+import { Button } from './Button';
+import ReactPlayer from 'react-player';
+
 
 function HeroSection() {
   return (
     <div className='hero-container'>
-      <video src='/videos/video-1.mp4' autoPlay />
       <h1>Sanguine</h1>
       <p>Seja um doador você também</p>
       <div className='hero-btns'>
@@ -25,6 +26,17 @@ function HeroSection() {
         >
           DÚVIDAS <i className='far fa-play-circle' />
         </Button>
+      </div>
+
+      <div>
+        <ReactPlayer
+          className='vplayer'
+          url='videos/video-1.mp4'
+          width='95%'
+          height='85%'
+          controls={true}
+          autoplay
+        />
       </div>
     </div>
   );

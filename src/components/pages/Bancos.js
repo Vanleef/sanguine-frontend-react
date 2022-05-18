@@ -1,5 +1,6 @@
 import React from 'react';
 import CardItem from '../CardItem';
+import '../Cards.css';
 import './Bancos.css';
 
 const example = [
@@ -179,12 +180,13 @@ const example = [
 const Bancos = () => {
     return (
         <div className="banco-container" id="banco-scroll">
-            {example.map((item) => {
+            {example.map((item, index) => {
                 return (
                     <CardItem
-                        text={[<BancoItens item={item} />, <SangueItens item={item.sangue} />]}
-                        label={item.banco}
-                        path='/bancos'
+                    key={index}
+                    text={[<BancoItens item={item} />, <SangueItens item={item.sangue} />]}
+                    label={item.banco}
+                    path='/bancos'
                     />
                 )
             })}
@@ -211,6 +213,7 @@ const SangueItens = ({ item }) => {
     return (
         <div>
             <table className="sangue-table">
+            <tbody>
                 <tr>
                     <td className='sangue-item'>A+:{item['A+']}</td>
                     <td className='sangue-item'>A-:{item['A-']}</td>
@@ -227,6 +230,9 @@ const SangueItens = ({ item }) => {
                     <td className='sangue-item'>O+:{item['O+']}</td>
                     <td className='sangue-item'>O-:{item['O-']}</td>
                 </tr>
+                
+                </tbody>
+
             </table>
             {console.log(item)}
         </div >

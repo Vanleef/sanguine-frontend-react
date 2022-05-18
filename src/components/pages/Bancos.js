@@ -213,7 +213,6 @@ const SangueItens = ({ item }) => {
     return (
         <div>
             <table className="sangue-table">
-            <tbody>
                 <tr>
                     <td className='sangue-item'>A+:{item['A+']}</td>
                     <td className='sangue-item'>A-:{item['A-']}</td>
@@ -231,8 +230,6 @@ const SangueItens = ({ item }) => {
                     <td className='sangue-item'>O-:{item['O-']}</td>
                 </tr>
                 
-                </tbody>
-
             </table>
             {console.log(item)}
         </div >

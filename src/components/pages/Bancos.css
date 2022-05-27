@@ -1,8 +1,34 @@
 body {
     background: linear-gradient(to bottom, #fefefe, #b6b6b6);
+
 }
 
-.banco-container {
+.dropdownBox {
+    display: flex;
+    margin: auto;
+    margin-top: 80px;
+    height: 50px;
+    width: 500px;
+}
+
+/* Works on Firefox */
+div#banco-container {
+    scrollbar-width: thin;
+}
+
+/* Works on Chrome, Edge, and Safari */
+div#banco-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+div#banco-container::-webkit-scrollbar-thumb {
+    background-color: #cacaca;
+    border-radius: 20px;
+    border: 2px solid rgb(109, 109, 109);
+}
+
+div#banco-container {
     margin: auto;
     margin-top: 50px;
     margin-bottom: 10px;

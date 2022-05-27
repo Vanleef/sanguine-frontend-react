@@ -233,8 +233,8 @@ const Bancos = () => {
 const BancoItens = ({ item }) => {
     return (
         <div className="banco-itens">
-            <h4>{item.estado}</h4>
-            <h4>{item.cidade}</h4>
+            <h5>{item.estado}</h5>
+            <h5>{item.cidade}</h5>
             <h5>{item.endereco}</h5>
             <h6>Sangue extraído em: {item.data_extracao}</h6>
         </div>

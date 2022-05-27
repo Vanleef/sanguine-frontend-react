@@ -3,7 +3,7 @@
   height: 60px;
   width: 100%;
   margin-bottom: 25px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
   border-radius: 0 0 10px 10px;
@@ -30,15 +30,13 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
-  max-width: 1500px;
+  height: 60px;
 }
 
 
 .login-logo img {
   width: 55px;
-  height: 55px;
-  margin-bottom: 20px;
+  height: 60px;
   margin-left: 10px;
   filter: grayscale(30%);
 }
@@ -71,7 +69,7 @@
 }
 
 .nav-item {
-  height: 80px;
+  height: 60px;
 }
 
 .nav-links {
@@ -81,17 +79,13 @@
   text-decoration: none;
   margin-top: 20px;
   padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .nav-links:hover {
-  border-bottom: 2px solid #fff;
-  border-radius: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
   transition: all 0.5s ease-out;
-  margin-top: 22px;
-}
-
-.fa-bars {
-  color: rgb(13, 194, 22);
+  text-shadow: 0 0px 5px rgba(255, 255, 255, 1);
 }
 
 .menu-icon {

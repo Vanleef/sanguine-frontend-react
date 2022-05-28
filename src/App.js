@@ -5,6 +5,7 @@ import Home from './components/pages/Home';
 import SignUp from './components/pages/SignUp';
 import Login from './components/pages/Login';
 import Bancos from './components/pages/Bancos';
+import Sobre from './components/pages/Sobre';
 import { AuthProvider } from "./contexts/auth";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useAuth from "./hooks/useAuth";
@@ -19,17 +20,18 @@ const Private = ({ Item }) => {
 function App() {
   return (
     <>
-    <AuthProvider>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/bancos' element={<Bancos />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+      <AuthProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/bancos' element={<Bancos />} />
+            <Route path='/sobre' element={<Sobre />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </>
   );
 }

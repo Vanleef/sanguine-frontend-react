@@ -1,0 +1,25 @@
+body {
+    background: url('http://nxt1.com.br/wp-content/uploads/2015/05/background-clean.jpg') center center / cover no-repeat;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+}
+
+.container {
+    height: 100%;
+    overflow: scroll;
+}
+
+.container__section {
+    /* Take full size */
+    height: 100%;
+    width: 100%;
+
+    /* Stick to the top */
+    position: sticky;
+    top: 0;
+}

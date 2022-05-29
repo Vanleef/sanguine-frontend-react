@@ -178,52 +178,107 @@ const example = [
 ]
 
 const Bancos = () => {
+
+    // let selectedUf = { "id": 12, "sigla": "AC", "nome": "Acre", "regiao": { "id": 1, "sigla": "N", "nome": "Norte" } };
+    // let listaBancos = example;  
+    // const [selectedUf, setSelectedUf] = React.useState({ "id": 12, "sigla": "AC", "nome": "Acre", "regiao": { "id": 1, "sigla": "N", "nome": "Norte" } });
+
+
+    const [banksList, setBanksList] = React.useState([]);
+    const [uf, setUf] = React.useState('AC');
+    const [listUf, setListUf] = React.useState([]);
+    // const [listaBancosUf, setlistaBancosUf] = React.useState(banksList);
+    const [listaBancosUf, setlistaBancosUf] = React.useState(example);
+
+
+    function loadUf() {
+        let url = 'https://servicodados.ibge.gov.br/';
+        url = url + 'api/v1/localidades/estados';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.sort((a, b) => a.nome.localeCompare(b.nome));
+                setListUf([...data]);
+            });
+    }
+
+
+    const loadBancos = () => {
+        let url = 'http://localhost:8000/';
+        url = url + '';
+        fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(
+                          `This is an HTTP error: The status is ${response.status}`
+                        );
+                      }
+                    return response.json()
+                })
+                .then(data => {
+                    data.sort((a, b) => a.nome.localeCompare(b.nome));
+                    setBanksList(data)
+                    console.log("(API) Bancos: " + data);
+                }).catch((err) => {
+                    console.log(err.message);
+                });
+    }
+
+    React.useEffect(() => {
+        // loadBancos()
+    }, [])
+
+
+    function getEstado(id) {
+        let url = 'https://servicodados.ibge.gov.br/';
+        url = url + 'api/v1/localidades/estados/' + id;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                updateLista(data);
+            });
+    }
+
+    function updateLista(selectedState) {
+        const novaLista = example.filter(item => item.estado === selectedState.sigla);
+        // const novaLista = banksList.filter(item => item.estado === selectedState.sigla);
+        setlistaBancosUf([...novaLista]);
+        console.log("O novo estado é: " + selectedState.sigla);
+        console.log("A nova lista é: " + novaLista);
+    }
+
+    React.useEffect(() => {
+        loadUf();
+    }, []);
+
+    function updateUF(a) {
+        setUf(a);
+        getEstado(a);
+        console.log("uf é: " + uf);
+    }
+
     return (
         <div>
             <div class="dropdownBox" include="form-input-select()">
-                <select>
-                    <option value='' hidden selected>Selecione o seu estado:</option>
-                    <option value='AC'>Acre</option>
-                    <option value='AL'>Alagoas</option>
-                    <option value='AP'>Amapá</option>
-                    <option value='AM'>Amazonas</option>
-                    <option value='BA'>Bahia</option>
-                    <option value='CE'>Ceará</option>
-                    <option value='ES'>Espirito Santo</option>
-                    <option value='GO'>Goiás</option>
-                    <option value='MA'>Maranhão</option>
-                    <option value='MT'>Mato Grosso</option>
-                    <option value='MS'>Mato Grosso do Sul</option>
-                    <option value='MG'>Minas Gerais</option>
-                    <option value='PA'>Pará</option>
-                    <option value='PB'>Paraíba</option>
-                    <option value='PR'>Paraná</option>
-                    <option value='PE'>Pernambuco</option>
-                    <option value='PI'>Piauí</option>
-                    <option value='RJ'>Rio de Janeiro</option>
-                    <option value='RN'>Rio Grande do Norte</option>
-                    <option value='RS'>Rio Grande do Sul</option>
-                    <option value='RO'>Rondônia</option>
-                    <option value='RR'>Roraima</option>
-                    <option value='SC'>Santa Catarina</option>
-                    <option value='SP'>São Paulo</option>
-                    <option value='SE'>Sergipe</option>
-                    <option value='TO'>Tocantins</option>
-                    <option value='DF'>Distrito Federal</option>
+                <select value={uf} onChange={e => updateUF(e.target.value)}>
+                    {listUf.map((a, b) => (
+                        <option value={a.id}>{a.sigla} - {a.nome}</option>
+                    ))}
                 </select>
             </div>
             <div id="banco-container" onWheel={onWheel}>
-                {example.map((item, index) => {
+                {listaBancosUf.map((item, index) => {
                     return (
                         <CardItem
                             key={index}
                             text={[<BancoItens item={item} />, <SangueItens item={item.sangue} />]}
                             label={item.banco}
-                            path='/bancos'
+                            path={''}
                         />
                     )
                 })}
             </div>
+
         </div >
 
     );
@@ -273,7 +328,6 @@ const SangueItens = ({ item }) => {
 }
 
 const onWheel = e => {
-    e.preventDefault();
     const bancoContainer = document.getElementById("banco-container");
     const containerScrollPosition = document.getElementById("banco-container").scrollLeft;
     bancoContainer.scrollTo({

@@ -182,10 +182,15 @@ const Bancos = () => {
     // let selectedUf = { "id": 12, "sigla": "AC", "nome": "Acre", "regiao": { "id": 1, "sigla": "N", "nome": "Norte" } };
     // let listaBancos = example;  
     // const [selectedUf, setSelectedUf] = React.useState({ "id": 12, "sigla": "AC", "nome": "Acre", "regiao": { "id": 1, "sigla": "N", "nome": "Norte" } });
-  
+
+
+    const [banksList, setBanksList] = React.useState([]);
     const [uf, setUf] = React.useState('AC');
     const [listUf, setListUf] = React.useState([]);
-    const [listaBancos, setListaBancos] = React.useState(example);
+    // const [listaBancosUf, setlistaBancosUf] = React.useState(banksList);
+    const [listaBancosUf, setlistaBancosUf] = React.useState(example);
+
+
     function loadUf() {
         let url = 'https://servicodados.ibge.gov.br/';
         url = url + 'api/v1/localidades/estados';
@@ -196,6 +201,33 @@ const Bancos = () => {
                 setListUf([...data]);
             });
     }
+
+
+    const loadBancos = () => {
+        let url = 'http://localhost:8000/';
+        url = url + '';
+        fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(
+                          `This is an HTTP error: The status is ${response.status}`
+                        );
+                      }
+                    return response.json()
+                })
+                .then(data => {
+                    data.sort((a, b) => a.nome.localeCompare(b.nome));
+                    setBanksList(data)
+                    console.log("(API) Bancos: " + data);
+                }).catch((err) => {
+                    console.log(err.message);
+                });
+    }
+
+    React.useEffect(() => {
+        // loadBancos()
+    }, [])
+
 
     function getEstado(id) {
         let url = 'https://servicodados.ibge.gov.br/';
@@ -209,10 +241,11 @@ const Bancos = () => {
 
     function updateLista(selectedState) {
         const novaLista = example.filter(item => item.estado === selectedState.sigla);
-        setListaBancos([...novaLista]);
+        // const novaLista = banksList.filter(item => item.estado === selectedState.sigla);
+        setlistaBancosUf([...novaLista]);
         console.log("O novo estado é: " + selectedState.sigla);
         console.log("A nova lista é: " + novaLista);
-      }
+    }
 
     React.useEffect(() => {
         loadUf();
@@ -221,7 +254,7 @@ const Bancos = () => {
     function updateUF(a) {
         setUf(a);
         getEstado(a);
-        console.log("uf é: "+ uf);
+        console.log("uf é: " + uf);
     }
 
     return (
@@ -234,7 +267,7 @@ const Bancos = () => {
                 </select>
             </div>
             <div id="banco-container" onWheel={onWheel}>
-                { listaBancos.map((item, index) => {
+                {listaBancosUf.map((item, index) => {
                     return (
                         <CardItem
                             key={index}

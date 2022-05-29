@@ -178,41 +178,74 @@ const example = [
 ]
 
 const Bancos = () => {
-    let estados = []
-    example.map((item) => {
-        if (!estados.includes(item.estado)) {
-            estados.push(item.estado)
-            console.log(estados)
-        }
-    })
 
+    // let selectedUf = { "id": 12, "sigla": "AC", "nome": "Acre", "regiao": { "id": 1, "sigla": "N", "nome": "Norte" } };
+    // let listaBancos = example;  
+    // const [selectedUf, setSelectedUf] = React.useState({ "id": 12, "sigla": "AC", "nome": "Acre", "regiao": { "id": 1, "sigla": "N", "nome": "Norte" } });
+  
+    const [uf, setUf] = React.useState('AC');
+    const [listUf, setListUf] = React.useState([]);
+    const [listaBancos, setListaBancos] = React.useState(example);
+    function loadUf() {
+        let url = 'https://servicodados.ibge.gov.br/';
+        url = url + 'api/v1/localidades/estados';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.sort((a, b) => a.nome.localeCompare(b.nome));
+                setListUf([...data]);
+            });
+    }
+
+    function getEstado(id) {
+        let url = 'https://servicodados.ibge.gov.br/';
+        url = url + 'api/v1/localidades/estados/' + id;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                updateLista(data);
+            });
+    }
+
+    function updateLista(selectedState) {
+        const novaLista = example.filter(item => item.estado === selectedState.sigla);
+        setListaBancos([...novaLista]);
+        console.log("O novo estado é: " + selectedState.sigla);
+        console.log("A nova lista é: " + novaLista);
+      }
+
+    React.useEffect(() => {
+        loadUf();
+    }, []);
+
+    function updateUF(a) {
+        setUf(a);
+        getEstado(a);
+        console.log("uf é: "+ uf);
+    }
 
     return (
         <div>
             <div class="dropdownBox" include="form-input-select()">
-                <select required>
-                    <option value="" hidden>Estado</option>
-
-                    {estados.forEach(function (estado, i) {
-                        { console.log(estado, i) }
-                        <option value={i}>{estado}</option>
-
-                    })}
-
+                <select value={uf} onChange={e => updateUF(e.target.value)}>
+                    {listUf.map((a, b) => (
+                        <option value={a.id}>{a.sigla} - {a.nome}</option>
+                    ))}
                 </select>
             </div>
             <div id="banco-container" onWheel={onWheel}>
-                {example.map((item, index) => {
+                { listaBancos.map((item, index) => {
                     return (
                         <CardItem
                             key={index}
                             text={[<BancoItens item={item} />, <SangueItens item={item.sangue} />]}
                             label={item.banco}
-                            path='/bancos'
+                            path={''}
                         />
                     )
                 })}
             </div>
+
         </div >
 
     );
@@ -222,8 +255,8 @@ const Bancos = () => {
 const BancoItens = ({ item }) => {
     return (
         <div className="banco-itens">
-            <h4>{item.estado}</h4>
-            <h4>{item.cidade}</h4>
+            <h5>{item.estado}</h5>
+            <h5>{item.cidade}</h5>
             <h5>{item.endereco}</h5>
             <h6>Sangue extraído em: {item.data_extracao}</h6>
         </div>
@@ -262,7 +295,6 @@ const SangueItens = ({ item }) => {
 }
 
 const onWheel = e => {
-    e.preventDefault();
     const bancoContainer = document.getElementById("banco-container");
     const containerScrollPosition = document.getElementById("banco-container").scrollLeft;
     bancoContainer.scrollTo({

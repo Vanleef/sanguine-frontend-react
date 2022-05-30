@@ -61,6 +61,7 @@ div#banco-container::-webkit-scrollbar-thumb {
 }
 
 div#banco-container {
+    word-wrap: break-word;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 5px;

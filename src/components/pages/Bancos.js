@@ -3,179 +3,179 @@ import CardItem from '../CardItem';
 import '../Cards.css';
 import './Bancos.css';
 
-// const example = [
-//     {
-//         "banco": "HEMOPE",
-//         "cidade": "Recife",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:56 GMT",
-//         "endereco": "RUA JOAQUIM NABUCO, 171 - CEP 52.011-900 - GRA\u00c7AS, RECIFE",
-//         "estado": "PE",
-//         "sangue": {
-//             "A+": "critica",
-//             "A-": "critica",
-//             "AB+": "critica",
-//             "AB-": "estavel",
-//             "B+": "critica",
-//             "B-": "alerta",
-//             "O+": "critica",
-//             "O-": "critica"
-//         },
-//         "unidade": null,
-//         "url": "http://www.hemope.pe.gov.br/"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     },
-//     {
-//         "banco": "HEMATO",
-//         "cidade": "S\u00e3o Paulo",
-//         "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
-//         "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
-//         "estado": "SP",
-//         "sangue": {
-//             "A+": "estavel",
-//             "A-": "alerta",
-//             "AB+": "estavel",
-//             "AB-": "estavel",
-//             "B+": "estavel",
-//             "B-": "alerta",
-//             "O+": "estavel",
-//             "O-": "alerta"
-//         },
-//         "unidade": null,
-//         "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
-//     }
-// ]
+const example = [
+    {
+        "banco": "HEMOPE",
+        "cidade": "Recife",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:56 GMT",
+        "endereco": "RUA JOAQUIM NABUCO, 171 - CEP 52.011-900 - GRA\u00c7AS, RECIFE",
+        "estado": "PE",
+        "sangue": {
+            "A+": "critica",
+            "A-": "critica",
+            "AB+": "critica",
+            "AB-": "estavel",
+            "B+": "critica",
+            "B-": "alerta",
+            "O+": "critica",
+            "O-": "critica"
+        },
+        "unidade": null,
+        "url": "http://www.hemope.pe.gov.br/"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    },
+    {
+        "banco": "HEMATO",
+        "cidade": "S\u00e3o Paulo",
+        "data_extracao": "Sat, 01 Jan 2022 02:51:57 GMT",
+        "endereco": "Rua Tom\u00e1s Carvalhal, 711  - Para\u00edso",
+        "estado": "SP",
+        "sangue": {
+            "A+": "estavel",
+            "A-": "alerta",
+            "AB+": "estavel",
+            "AB-": "estavel",
+            "B+": "estavel",
+            "B-": "alerta",
+            "O+": "estavel",
+            "O-": "alerta"
+        },
+        "unidade": null,
+        "url": "https://www.doesanguedoevida.com.br/banco-de-sangue-sao-paulo-jd-paulista"
+    }
+]
 
 async function banksRequest(){
     let response = await fetch('http://localhost:8000/');
@@ -186,7 +186,7 @@ async function banksRequest(){
 let allBanks;
 banksRequest().then(response=>{
     allBanks = response
-    // console.log(allBanks)
+    console.log(allBanks)
 })
 
 const Bancos = () => {
@@ -196,7 +196,6 @@ const Bancos = () => {
     // const [selectedUf, setSelectedUf] = React.useState({ "id": 12, "sigla": "AC", "nome": "Acre", "regiao": { "id": 1, "sigla": "N", "nome": "Norte" } });
 
 
-    const [banksList, setBanksList] = React.useState([]);
     const [uf, setUf] = React.useState('AC');
     const [listUf, setListUf] = React.useState([]);
     // const [listaBancosUf, setlistaBancosUf] = React.useState(banksList);
@@ -215,32 +214,6 @@ const Bancos = () => {
     }
 
 
-    const loadBancos = () => {
-        let url = 'http://localhost:8000/';
-        url = url + '';
-        fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(
-                          `This is an HTTP error: The status is ${response.status}`
-                        );
-                      }
-                    return response.json()
-                })
-                .then(data => {
-                    data.sort((a, b) => a.nome.localeCompare(b.nome));
-                    setBanksList(data)
-                    console.log("(API) Bancos: " + data);
-                }).catch((err) => {
-                    console.log(err.message);
-                });
-    }
-
-    React.useEffect(() => {
-        // loadBancos()
-    }, [])
-
-
     function getEstado(id) {
         let url = 'https://servicodados.ibge.gov.br/';
         url = url + 'api/v1/localidades/estados/' + id;
@@ -252,7 +225,9 @@ const Bancos = () => {
     }
 
     function updateLista(selectedState) {
-        const novaLista = allBanks.filter(item => item.estado === selectedState.sigla);
+        let novaLista = [];
+        if(allBanks.length > 0) novaLista = allBanks.filter(item => item.estado === selectedState.sigla);
+        else novaLista = example.filter(item => item.estado === selectedState.sigla);
         // const novaLista = banksList.filter(item => item.estado === selectedState.sigla);
         setlistaBancosUf([...novaLista]);
         console.log("O novo estado é: " + selectedState.sigla);

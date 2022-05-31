@@ -219,9 +219,9 @@ const SignUp = () => {
                 }}
               />
             </div>
-            <div>
+            <div class="sanguine-container">
               <h4 className="tipo-sanguineo-header">Tipo Sanguíneo</h4>
-              <select value={tipo_sanguineo} onChange={e => setTipo_sanguineo(e.target.value)}>
+              <select class="sanguine-dropdown" value={tipo_sanguineo} onChange={e => setTipo_sanguineo(e.target.value)}>
                 {listSangue.map((x, y) => (
                   <option key={y} value={x}>{x}</option>
                 ))}

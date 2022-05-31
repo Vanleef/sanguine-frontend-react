@@ -2,6 +2,10 @@ import React from 'react';
 import DeveloperInfo from '../DeveloperInfo';
 import HideText from '../HideText';
 import './Sobre.css';
+import bruno from '../../assets/desenvolvedores/bruno.jpg';
+import david from '../../assets/desenvolvedores/david.jpg';
+import edu from '../../assets/desenvolvedores/edu.jpg';
+import mateus from '../../assets/desenvolvedores/mateus.jpg';
 
 const Faq1 = () => {
     return (
@@ -43,7 +47,7 @@ const Sobre = () => {
                                             </div>
                                         </div>
                                     </div> */}
-                                    <HideText 
+                                    <HideText
                                         number="1"
                                         textButton="Quem pode doar?"
                                         textDisplay="Qualquer pessoa com idade entre 18 e 69 anos que pese mais de 50 quilos. 
@@ -85,22 +89,35 @@ const Sobre = () => {
                         <h1>DESENVOLVEDORES</h1>
                     </div>
                     <div class="developers">
-                        <DeveloperInfo 
-                            name="Bruno Simões"
-                            altImg="Devia ter uma imagem aqui"
-                        />
-                        <DeveloperInfo 
-                            name="David Pierre"
-                            altImg="Devia ter uma imagem aqui"
-                        />
-                        <DeveloperInfo 
-                             name="Eduardo Roque"
-                            altImg="Devia ter uma imagem aqui"
-                        />
-                        <DeveloperInfo 
-                            name="Mateus Fittipaldi"
-                            altImg="Devia ter uma imagem aqui"
-                        />
+                        <div class="cardImage">
+                            <img
+                                src={bruno}
+                                alt="Devia ter uma imagem aqui">
+                            </img>
+                            <h1>Bruno Simões</h1>
+                        </div>
+                        <div class="cardImage">
+                            <img
+                                src={david}
+                                alt="Devia ter uma imagem aqui">
+                            </img>
+                            <h1>David Pierre</h1>
+                        </div>
+                        <div class="cardImage">
+                            <img
+                                src={edu}
+                                alt="Devia ter uma imagem aqui">
+                            </img>
+                            <h1>Eduardo Roque</h1>
+                        </div>
+                        <div class="cardImage">
+                            <img
+                                src={mateus}
+                                alt="Devia ter uma imagem aqui">
+                            </img>
+                            <h1>Mateus Fittipaldi</h1>
+                        </div>
+
                     </div>
                 </section>
 

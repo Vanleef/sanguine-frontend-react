@@ -5,6 +5,22 @@
   font-family: 'PT Sans', sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+  /* The image used */
+  background-image: url('http://nxt1.com.br/wp-content/uploads/2015/05/background-clean.jpg');
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .home,
 .sign-up {
   display: flex;

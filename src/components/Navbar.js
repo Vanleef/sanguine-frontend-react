@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import useAuth from "../hooks/useAuth";
 
 function Navbar() {
+
+  const {signed, signout} = useAuth();
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -22,6 +25,7 @@ function Navbar() {
   useEffect(() => {
     showButton();
   }, []);
+
 
   window.addEventListener('resize', showButton);
 
@@ -72,11 +76,13 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <Link
-            to="/login"
-          >
-            {button && <Button buttonStyle='btn--outline'>Entrar</Button>}
-          </Link>
+          
+            {signed ?
+            <Link to="/"> {button && <Button onClick={signout()} buttonStyle='btn--outline'>Sair</Button>} </Link>
+            :
+            <Link to="/login"> {button && <Button buttonStyle='btn--outline'>Entrar</Button>}  </Link>
+            }
+         
         </div>
       </nav>
     </>

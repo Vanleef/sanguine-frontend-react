@@ -47,10 +47,11 @@ const SignUp = () => {
 
     const userData = { 'nome': nome, 'email': email, 'cidade': cidade, 'estado': estado, 'tipo_sanguineo': tipo_sanguineo, 'genero': genero, 'senha': password };
 
-    createUser(userData);
+    //createUser(userData);
 
+    alert("Usuário cadatrado com sucesso!");
+    navigate("/");
   };
-
 
   async function createUser(userData) {
     try {
@@ -227,9 +228,9 @@ const SignUp = () => {
                 ))}
               </select>
             </div>
-            <h4 className="gender-header">Genero</h4>
+            <h4 className="gender-header">Gênero</h4>
             <div class="genderRadio" value={genero} onChange={e => setGenero(e.target.value)}>
-              <input type="radio" value="Masculino" name="gender" checked={true}/> Masculino
+              <input type="radio" value="Masculino" name="gender" checked={true} /> Masculino
               <input type="radio" value="Feminino" name="gender" /> Feminino
             </div>
 

@@ -66,7 +66,7 @@ function Login() {
                                 buttonSize='btn--large'
                                 onClick={handleLogin}
                             >
-                                Login
+                                Entrar
                             </Button>
                         </div>
 

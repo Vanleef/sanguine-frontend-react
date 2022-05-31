@@ -199,7 +199,7 @@ const Bancos = () => {
     const [uf, setUf] = React.useState('AC');
     const [listUf, setListUf] = React.useState([]);
     // const [listaBancosUf, setlistaBancosUf] = React.useState(banksList);
-    const [listaBancosUf, setlistaBancosUf] = React.useState(allBanks);
+    const [listaBancosUf, setlistaBancosUf] = React.useState([]);
 
 
     function loadUf() {
@@ -226,8 +226,10 @@ const Bancos = () => {
 
     function updateLista(selectedState) {
         let novaLista = [];
-        if(allBanks.length > 0) novaLista = allBanks.filter(item => item.estado === selectedState.sigla);
+        
+        if(typeof allBanks !== 'undefined' && allBanks.length > 0) novaLista = allBanks.filter(item => item.estado === selectedState.sigla);
         else novaLista = example.filter(item => item.estado === selectedState.sigla);
+        
         // const novaLista = banksList.filter(item => item.estado === selectedState.sigla);
         setlistaBancosUf([...novaLista]);
         console.log("O novo estado é: " + selectedState.sigla);

@@ -17,10 +17,6 @@ div {
     padding-top: 10px;
   }
 
-div + div {
-    margin-top: 20px;
-}
-
 input + input{
     margin-left: 20px;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import './Footer.css';
 import { Button } from './Button';
+import { Link } from 'react-router-dom';
 
 function Footer() {
 
@@ -22,23 +23,15 @@ function Footer() {
     window.addEventListener('resize', showButton);
 
     return (
-        <div className='footer-container'>
-            <section className='footer-subscription'>
-                {button && <Button buttonStyle='btn--outline'>Registrar</Button>}
-   
-                <p className='footer-subscription-text'>
-                    Registre-se para acessar mais informações sobre os bancos de sangue mais próximos de você
-                </p>
-                {/* <div className='input-areas'>
-          <form>
-            <input
-              className='footer-input'
-              name='email'
-              type='email'
-              placeholder='Seu Email'
-            />
-          </form>
-        </div> */}
+            <div className='footer-container'>
+                <section className='footer-subscription'>
+                    <Link
+                    to="/login"
+                    >{button && <Button buttonStyle='btn--outline'>Registrar</Button>}
+                    </Link>
+                    <p className='footer-subscription-text'>
+                        Registre-se para acessar mais informações sobre os bancos de sangue mais próximos de você
+                    </p>
             </section>
         </div>
 

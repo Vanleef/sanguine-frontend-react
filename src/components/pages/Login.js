@@ -73,7 +73,7 @@ function Login() {
 
                         <div className="text-center">
                             <span className="txt1">Não possui conta? </span>
-                            <a className="txt2" href="#">
+                            <a className="txt2" >
                             <Link to="/sign-up">Criar conta </Link>
                             {console.log("Login Realizado com Sucesso!")}
                             </a>

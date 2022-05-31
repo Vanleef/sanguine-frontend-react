@@ -233,7 +233,7 @@ const SignUp = () => {
               <input type="radio" value="Feminino" name="gender" /> Feminino
             </div>
 
-            <C.labelError>{error}</C.labelError>
+            <C.labelError>{error && alert(error)}</C.labelError>
             <div className="container-login-form-btn">
               <Button
                 className='btns'

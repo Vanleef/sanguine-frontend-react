@@ -11,14 +11,31 @@
   justify-content: center;
   align-items: center;
   object-fit: contain;
-  background-color: #fdfbfb;
+  background-color: rgb(218, 214, 214);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding-top: 50px;
 }
 
 .hero-container > h1 {
-  color: rgb(126, 10, 10);
+  background: linear-gradient(to right,#6b0a0f 10%, #757472 50%, #a31414 60%);
+		background-size: auto auto;
+		background-clip: border-box;
+		background-size: 200% auto;
+		color: #fff;
+		background-clip: text;
+		text-fill-color: transparent;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: textclip 5s linear infinite;
   font-size: 100px;
   margin-top: 500px;
+}
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
 }
 
 .hero-container > p {

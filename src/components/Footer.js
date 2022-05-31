@@ -23,15 +23,15 @@ function Footer() {
     window.addEventListener('resize', showButton);
 
     return (
-            <div className='footer-container'>
-                <section className='footer-subscription'>
-                    <Link
+        <div className='footer-container'>
+            <section className='footer-subscription'>
+                <Link
                     to="/login"
-                    >{button && <Button buttonStyle='btn--outline'>Registrar</Button>}
-                    </Link>
-                    <p className='footer-subscription-text'>
-                        Registre-se para acessar mais informações sobre os bancos de sangue mais próximos de você
-                    </p>
+                >{button && <Button buttonStyle='btn--outline'>Registrar</Button>}
+                </Link>
+                <p className='footer-subscription-text'>
+                    Registre-se para acessar mais informações sobre os bancos de sangue mais próximos de você
+                </p>
             </section>
         </div>
 

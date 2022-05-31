@@ -1,5 +1,5 @@
 .footer-container {
-    background-color: #242424;
+    background-color: #fdfbfb;
     padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
   
     margin-top: 350px;
     padding: 24px;
-    color: #fff;
+    color: rgb(37, 0, 0);
   }
   
   .footer-subscription > p {
@@ -29,6 +29,17 @@
     font-size: 24px;
   }
   
+  .footer-subscription .btn {
+    border-color: rgb(37, 0, 0);
+    border-width: 2px;
+    color: rgb(37, 0, 0);
+  }
+
+  .footer-subscription .btn:hover {
+    background-color: #c93636;
+    color: rgb(255, 255, 255);
+  }
+
   .footer-subscription-text {
     margin-bottom: 24px;
     font-size: 20px;

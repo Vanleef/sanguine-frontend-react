@@ -1,5 +1,5 @@
 .navbar {
-  background: #4b4b4b;
+  background: #c93636;
   height: 60px;
   width: 100%;
   margin-bottom: 25px;
@@ -84,6 +84,7 @@
 }
 
 .nav-links:hover {
+  color: #dfdfdf;
   border-bottom: 1px solid rgba(255, 255, 255, 1);
   transition: all 0.5s ease-out;
   text-shadow: 0 0px 5px rgba(255, 255, 255, 1);

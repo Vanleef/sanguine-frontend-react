@@ -59,6 +59,7 @@
 
 .faq .card .card-header:hover {
     padding-left: 10px;
+    background-color: rgba(75, 75, 75, 0.144);
 }
 
 .faq .card .card-header .faq-title {

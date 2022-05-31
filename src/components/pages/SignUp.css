@@ -1,29 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Knewave&family=Nunito:wght@400;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   font-family: Nunito, sans-serif;
 }
 
-button{
-    margin: 30px;
+button {
+  margin: 30px;
 }
 
 div {
-    padding-top: 10px;
-  }
-
-input + input{
-    margin-left: 20px;
+  padding-top: 10px;
 }
 
-.genderRadio{
-    color: #d7faf5;
-    display: inline-block;
+input+input {
+  margin-left: 20px;
+}
+
+.genderRadio {
+  color: #d7faf5;
+  display: inline-block;
+}
+
+.gender-header{
+  margin-top: 20px;
+  color: #adadad;
+  font-family: Nunito, sans-serif;
+  display: block;
+  font-size: 16px;
+
+}
+
+.date-picker{
+  background: rgba(255, 255, 255, 0.5);
+  width: 40%;
+  color: #3b3939;
+  font-family: Nunito, sans-serif;
+  display: block;
+  font-size: 16px;
+  border-radius: 10px 10px 10px 10px;
+  border: 1px rgb(255, 255, 255);
+  border-style: none groove groove groove;
+  text-align: center;
+}
+
+.date-header{
+  margin-top: 10px;
+  color: #adadad;
+  font-family: Nunito, sans-serif;
+  display: block;
+  font-size: 16px;
+
+}
+
+.tipo-sanguineo-header{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #adadad;
+  font-family: Nunito, sans-serif;
+  display: block;
+  font-size: 16px;
+
 }
 
 .container {
@@ -114,10 +157,10 @@ input + input{
   -moz-transition: all 0.4s;
   transition: all 0.4s;
   background: #6a7dfe;
-  background: -webkit-linear-gradient(to left,  #fefefe, #ff2121);
-  background: -o-linear-gradient(to left,  #fefefe, #ff2121);
-  background: -moz-linear-gradient(to left,  #fefefe, #ff2121);
-  background: linear-gradient(to left,  #fefefe, #ff2121);
+  background: -webkit-linear-gradient(to left, #fefefe, #ff2121);
+  background: -o-linear-gradient(to left, #fefefe, #ff2121);
+  background: -moz-linear-gradient(to left, #fefefe, #ff2121);
+  background: linear-gradient(to left, #fefefe, #ff2121);
 }
 
 .focus-input::after {
@@ -179,9 +222,9 @@ input + input{
   height: 50px;
   background: #6a7dfe;
   background: -webkit-linear-gradient(to left, #fefefe, #ff2121);
-  background: -o-linear-gradient(to left,  #fefefe, #ff2121);
-  background: -moz-linear-gradient(to left,  #fefefe, #ff2121);
-  background: linear-gradient(to left,  #fefefe, #ff2121);
+  background: -o-linear-gradient(to left, #fefefe, #ff2121);
+  background: -moz-linear-gradient(to left, #fefefe, #ff2121);
+  background: linear-gradient(to left, #fefefe, #ff2121);
 }
 
 .login-form-btn:hover {
@@ -208,4 +251,3 @@ input + input{
   line-height: 1.5;
   text-decoration: none;
 }
-

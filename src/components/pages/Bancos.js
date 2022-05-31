@@ -2,6 +2,8 @@ import React from 'react';
 import CardItem from '../CardItem';
 import '../Cards.css';
 import './Bancos.css';
+import * as api from '../../api/api';
+
 
 const example = [
     {
@@ -177,14 +179,8 @@ const example = [
     }
 ]
 
-async function banksRequest(){
-    let response = await fetch('http://localhost:8000/');
-    let data = await response.json();
-    return data;
-}
-
 let allBanks;
-banksRequest().then(response=>{
+api.banksRequest().then(response=>{
     allBanks = response
     console.log(allBanks)
 })

@@ -3,7 +3,14 @@ import { Button } from "../../components/Button";
 import * as C from "./signUpStyled";
 import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
+import DatePicker, { registerLocale } from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
+import ptBR from 'date-fns/locale/pt-BR';
+
 import useAuth from "../../hooks/useAuth";
+
+registerLocale('ptBR', ptBR);
 
 const SignUp = () => {
   const [nome, setNome] = useState("");
@@ -11,8 +18,12 @@ const SignUp = () => {
   const [emailConf, setEmailConf] = useState("");
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
-  const [genero, setGenero] = useState("");
+  const [dataNasc, setDataNasc] = useState(new Date('01/01/2021'));
+  const [tipo_sanguineo, setTipo_sanguineo] = useState("A+");
+  const [genero, setGenero] = useState("Masculino");
   const [password, setPassword] = useState("");
+
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -34,17 +45,37 @@ const SignUp = () => {
       return;
     }
 
-    alert("Usuário cadatrado com sucesso!");
-    navigate("/");
+    const userData = { 'nome': nome, 'email': email, 'cidade': cidade, 'estado': estado, 'tipo_sanguineo': tipo_sanguineo, 'genero': genero, 'senha': password };
+
+    createUser(userData);
+
   };
 
 
+  async function createUser(userData) {
+    try {
+      const response = await fetch('http://localhost:8000/user/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData)
+      })
+      let data = response.json();
+      alert("Usuário cadatrado com sucesso!");
+      navigate("/");
+      return data;
+    }
+    catch (error) {
+      alert("Ocorreu um problema com o cadastro de Usuário!");
+    }
+  }
+
+
+  const listSangue = ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"];
   const [uf, setUf] = useState('AC');
   const [listUf, setListUf] = useState([]);
-  const [city, setCity] = useState('');
   const [listCity, setListCity] = useState([]);
-  const listSangue = ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"];
-  const [tipo_sanguineo, setTipo_sanguineo] = useState("A+");
 
   function loadUf() {
     let url = 'https://servicodados.ibge.gov.br/';
@@ -82,6 +113,11 @@ const SignUp = () => {
     setUf(a);
     getState(a);
     console.log("uf é: " + uf);
+  }
+
+  function updateCidade(a) {
+    setCidade(a);
+    console.log(cidade);
   }
 
 
@@ -148,27 +184,52 @@ const SignUp = () => {
                 ))}
               </select>
               <div>
-                <select value={city} onChange={e => setCity(e.target.value)}>
+                <select value={cidade} onChange={e => updateCidade(e.target.value)}>
                   {listCity.map((a, b) => (
                     <option value={a.sigla}>{a.nome}</option>
                   ))}
                 </select>
               </div>
             </div>
-
-
-
             <div>
+              <h4 className="date-header">Data de Nascimento</h4>
+              <DatePicker className="date-picker"
+                selected={dataNasc}
+                onChange={date => setDataNasc(date)}
+                placeholderText='Data de Nascimento:'
+                dateFormat={'dd/MM/yyyy'}
+                dateFormatCalendar="MMMM"
+                locale={'ptBR'}
+                showYearDropdown
+                scrollableYearDropdown
+                yearDropdownItemNumber={90}
+                dropdownMode="scroll"
+                popperClassName="date-popper"
+                popperPlacement="auto"
+                popperModifiers={{
+                  offset: {
+                    enabled: true,
+                    offset: '5px, 10px'
+                  },
+                  preventOverflow: {
+                    enabled: true,
+                    escapeWithReference: false, // force popper to stay in viewport (even when input is scrolled out of view)
+                    boundariesElement: 'viewport'
+                  }
+                }}
+              />
+            </div>
+            <div>
+              <h4 className="tipo-sanguineo-header">Tipo Sanguíneo</h4>
               <select value={tipo_sanguineo} onChange={e => setTipo_sanguineo(e.target.value)}>
                 {listSangue.map((x, y) => (
                   <option key={y} value={x}>{x}</option>
                 ))}
               </select>
             </div>
-
-
-            <div class="genderRadio" onChange={setGenero.bind(this)}>
-              <input type="radio" value="Masculino" name="gender" /> Masculino
+            <h4 className="gender-header">Genero</h4>
+            <div class="genderRadio" value={genero} onChange={e => setGenero(e.target.value)}>
+              <input type="radio" value="Masculino" name="gender" checked={true}/> Masculino
               <input type="radio" value="Feminino" name="gender" /> Feminino
             </div>
 

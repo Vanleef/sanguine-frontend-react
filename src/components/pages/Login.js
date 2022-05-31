@@ -25,8 +25,9 @@ function Login() {
         setError(res);
         return;
       }
-  
+      
       navigate("/");
+  
     };
 
 
@@ -57,7 +58,7 @@ function Login() {
 
                             <span className="focus-input" data-placeholder="Password"></span>
                         </div>
-                        <C.labelError>{error}</C.labelError>
+                        <C.labelError>{error && alert(error)}</C.labelError>
 
                         <div className="container-login-form-btn">
                             <Button

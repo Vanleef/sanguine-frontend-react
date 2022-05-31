@@ -1,4 +1,5 @@
 import React from 'react';
+import DeveloperInfo from '../DeveloperInfo';
 import HideText from '../HideText';
 import './Sobre.css';
 
@@ -80,26 +81,27 @@ const Sobre = () => {
                 </section>
 
                 <section class="about-section">
-
-                    <div class="developers">
-                        <div class="cardImage">
-                            <img src="https://images.unsplash.com/photo-1600722230999-22c256d38cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" />
-                            <h1>Nome aqui</h1>
-                        </div>
-                        <div class="cardImage">
-                            <img src="https://images.unsplash.com/photo-1600722230999-22c256d38cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" />
-                            <h1>Nome aqui</h1>
-                        </div>
-                        <div class="cardImage">
-                            <img src="https://images.unsplash.com/photo-1600722230999-22c256d38cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" />
-                            <h1>Nome aqui</h1>
-                        </div>
-                        <div class="cardImage">
-                            <img src="https://images.unsplash.com/photo-1600722230999-22c256d38cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" />
-                            <h1>Nome aqui</h1>
-                        </div>
+                    <div class="dev-title">
+                        <h1>DESENVOLVEDORES</h1>
                     </div>
-
+                    <div class="developers">
+                        <DeveloperInfo 
+                            name="Bruno Simões"
+                            altImg="Devia ter uma imagem aqui"
+                        />
+                        <DeveloperInfo 
+                            name="David Pierre"
+                            altImg="Devia ter uma imagem aqui"
+                        />
+                        <DeveloperInfo 
+                             name="Eduardo Roque"
+                            altImg="Devia ter uma imagem aqui"
+                        />
+                        <DeveloperInfo 
+                            name="Mateus Fittipaldi"
+                            altImg="Devia ter uma imagem aqui"
+                        />
+                    </div>
                 </section>
 
             </body>

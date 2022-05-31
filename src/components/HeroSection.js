@@ -3,9 +3,20 @@ import '../App.css';
 import './HeroSection.css';
 import { Button } from './Button';
 import ReactPlayer from 'react-player';
+import { useNavigate } from 'react-router-dom';
 
 
 function HeroSection() {
+  let navigate = useNavigate();
+  const routeSobre = () => {
+    let path = '/sobre';
+    navigate(path);
+  }
+  const routeRegistrar = () => {
+    let path = '/sign-up';
+    navigate(path);
+  }
+
   return (
     <div className='hero-container'>
       <h1>Sanguine</h1>
@@ -15,6 +26,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          onClick={routeRegistrar}
         >
           REGISTRAR
         </Button>
@@ -22,7 +34,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
-          onClick={console.log('hey')}
+          onClick={routeSobre}
         >
           DÚVIDAS <i className='far fa-play-circle' />
         </Button>
@@ -35,7 +47,7 @@ function HeroSection() {
           width='95%'
           height='85%'
           controls={true}
-          autoplay
+          autoPlay
         />
       </div>
     </div>

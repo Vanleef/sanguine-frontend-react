@@ -59,6 +59,9 @@
 
 .faq .card .card-header:hover {
     padding-left: 10px;
+    background-color: rgba(112, 112, 112, 0.253);
+    outline: auto;
+    outline-color: rgb(200, 0, 0);
 }
 
 .faq .card .card-header .faq-title {
@@ -67,10 +70,11 @@
     padding: 0px;
     padding-left: 30px;
     padding-right: 30px;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 15px;
     letter-spacing: 1px;
-    color: #6b6b6b;
+    /* color: #6b6b6b; */
+    color: black;
     text-decoration: none !important;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
@@ -111,6 +115,8 @@
 
 .faq .card .card-body p {
     margin-bottom: 14px;
+    font-weight: bold;
+    color: black;
 }
 
 @media (max-width: 991px) {
@@ -127,13 +133,18 @@
 
 .about-section {
     margin: auto;
+}
 
+.dev-title h1 {
+    font-size: 40px;
+    padding-bottom: 40px;
 }
 
 .developers {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 50px;
 }
 
 img {

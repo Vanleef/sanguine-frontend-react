@@ -55,6 +55,7 @@ const Navbar = ()=> {
   async function logout(){
     await signout();
     setIsLogged(!signed);
+    alert("Logout Efetuado");
   }
 
 

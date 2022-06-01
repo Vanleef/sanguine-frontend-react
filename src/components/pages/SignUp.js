@@ -48,7 +48,6 @@ const SignUp = () => {
 
     //createUser(userData);
 
-    alert("Usuário cadatrado com sucesso!");
     navigate("/");
   };
 

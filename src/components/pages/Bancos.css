@@ -1,25 +1,23 @@
 /* <select> styles */
 select {
-    /* Reset */
+    /* Reset Select */
     appearance: none;
+    overflow-y:hidden;
     outline: 0;
-    font: inherit;
+    border: 0;
+    box-shadow: none;
     /* Personalize */
-    width: 20em;
-    height: 3em;
-    padding: 0 4em 0 1em;
-
-    background: rgba(255, 255, 255, 0.5);
+    padding: 1em 1em;
+    color: rgb(0, 0, 0);
+    font-size: medium;
+    background-color:rgba(190, 193, 194, 0.372);
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(22, 24, 24, 0.445);
     cursor: pointer;
-}
+  }
 
 option {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.571);
     color: rgba(0, 0, 0, 0.6);
 }
 
@@ -27,8 +25,6 @@ option {
 div#banco-container {
     scrollbar-width: thin;
     border-radius: 16px;
-    border-left: 1px solid rgba(255, 54, 54, 0.5);
-    border-right: 1px solid rgba(255, 54, 54, 0.5);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -38,10 +34,9 @@ div#banco-container::-webkit-scrollbar {
 
 
 div#banco-container::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(249, 245, 245, 0.756);
     border-radius: 16px;
-    border: 1px outset rgba(255, 54, 54, 0.5);
-
+    border: 1px solid rgba(22, 24, 24, 0.445);
 }
 
 div#banco-container {
@@ -52,15 +47,23 @@ div#banco-container {
     width: 70%;
     display: flex;
     overflow-y: hidden;
+    background-color: rgba(69, 74, 74, 0.187);
+
 }
 
 .banco-itens {
     font-size: 20px;
+    border-radius: 16px;
+    padding: 5px;
+    border: 1px solid rgba(22, 24, 24, 0.119);
+
 }
 
 .sangue-table {
     margin: auto;
-    padding: 40px;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(22, 24, 24, 0.119);
 
 }
 

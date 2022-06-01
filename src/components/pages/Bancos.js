@@ -182,7 +182,6 @@ const example = [
 let allBanks;
 api.banksRequest().then(response=>{
     allBanks = response
-    console.log(allBanks)
 })
 
 const Bancos = () => {

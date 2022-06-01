@@ -5,7 +5,6 @@ import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import DatePicker, { registerLocale } from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-
 import ptBR from 'date-fns/locale/pt-BR';
 
 import useAuth from "../../hooks/useAuth";
@@ -52,25 +51,6 @@ const SignUp = () => {
     alert("Usuário cadatrado com sucesso!");
     navigate("/");
   };
-
-  async function createUser(userData) {
-    try {
-      const response = await fetch('http://localhost:8000/user/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData)
-      })
-      let data = response.json();
-      alert("Usuário cadatrado com sucesso!");
-      navigate("/");
-      return data;
-    }
-    catch (error) {
-      alert("Ocorreu um problema com o cadastro de Usuário!");
-    }
-  }
 
 
   const listSangue = ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"];
@@ -233,8 +213,9 @@ const SignUp = () => {
               <input type="radio" value="Masculino" name="gender" checked={true} /> Masculino
               <input type="radio" value="Feminino" name="gender" /> Feminino
             </div>
-
-            <C.labelError>{error && alert(error)}</C.labelError>
+            <div>
+            <C.labelErrorSignUp>{error}</C.labelErrorSignUp>
+            </div>
             <div className="container-login-form-btn">
               <Button
                 className='btns'

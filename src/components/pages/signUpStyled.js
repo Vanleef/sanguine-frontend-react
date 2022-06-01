@@ -37,8 +37,11 @@ line-height: 1.5;
 padding-right: 5px;
 `;
 
-export const labelError = styled.label`
-  font-size: 14px;
+export const labelErrorSignUp = styled.label`
+  text-align: center;
+  display:block;
+  margin-top: 10px;
+  font-size: 18px;
   color: red;
 `;
 

@@ -22,13 +22,14 @@ function App() {
     <>
       <AuthProvider>
         <Router>
-          <Navbar />
+          <Navbar/>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={ <Home/>} />
             <Route path='/login' element={<Login />} />
             <Route path='/sign-up' element={<SignUp />} />
             <Route path='/bancos' element={<Bancos />} />
             <Route path='/sobre' element={<Sobre />} />
+            <Route path='*' element={ <Home/>} />
           </Routes>
         </Router>
       </AuthProvider>

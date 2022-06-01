@@ -4,15 +4,45 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import useAuth from "../hooks/useAuth";
 
-function Navbar() {
+
+const Navbar = ()=> {
 
   const {signed, signout} = useAuth();
-
+  const [isLogged, setIsLogged] = useState();
+  
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  
+  function Private(Item, Item2) {
+    if(Item==null) return signed ? <></> : <Item2/>;
+    if(Item2==null) return signed ? <Item/> : <></>;
+
+    return signed ? <Item/> : <Item2/>;
+  };
+  const Bancos = () => {
+    return(
+      <li className='nav-item'> <Link to='/bancos' className='nav-links' onClick={closeMobileMenu}>Bancos</Link>
+      </li>
+  );
+  }
+
+  const LogoutButton = () => {
+    return (
+    // const msg = "Olá, " + userName;
+    // <h3>{msg}</h3>
+    <Link to='/'> {button && <Button onClick={logout} buttonStyle='btn--outline'>Sair</Button>}</Link>
+    );
+  }
+
+  const LoginButton = () => {
+    return (
+    <Link to='/login'> {button && <Button buttonStyle='btn--outline'>Entrar</Button>}</Link>
+    );
+  }
+
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -22,10 +52,21 @@ function Navbar() {
     }
   };
 
+  async function logout(){
+    await signout();
+    setIsLogged(!signed);
+  }
+
+
   useEffect(() => {
     showButton();
-  }, []);
+  },);
 
+  useEffect(() => {
+  if (signed) {
+    setIsLogged(signed);
+  }
+  }, [signed, isLogged]);
 
   window.addEventListener('resize', showButton);
 
@@ -57,15 +98,7 @@ function Navbar() {
                 Início
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link
-                to='/bancos'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Bancos
-              </Link>
-            </li>
+            {Private(Bancos, null)}
             <li className='nav-item'>
               <Link
                 to='/sobre'
@@ -76,17 +109,13 @@ function Navbar() {
               </Link>
             </li>
           </ul>
+          {Private(LogoutButton, LoginButton)}
           
-            {signed ?
-            <Link to="/"> {button && <Button onClick={signout()} buttonStyle='btn--outline'>Sair</Button>} </Link>
-            :
-            <Link to="/login"> {button && <Button buttonStyle='btn--outline'>Entrar</Button>}  </Link>
-            }
-         
         </div>
       </nav>
     </>
   );
+  
 }
 
 export default Navbar;

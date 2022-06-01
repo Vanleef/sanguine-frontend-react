@@ -58,7 +58,7 @@ function Login() {
 
                             <span className="focus-input" data-placeholder="Password"></span>
                         </div>
-                        <C.labelError>{error && alert(error)}</C.labelError>
+                        <C.labelError>{error}</C.labelError>
 
                         <div className="container-login-form-btn">
                             <Button
@@ -73,10 +73,9 @@ function Login() {
 
                         <div className="text-center">
                             <span className="txt1">Não possui conta? </span>
-                            <a className="txt2" >
+                            <span className="txt2" >
                             <Link to="/sign-up">Criar conta </Link>
-                            {console.log("Login Realizado com Sucesso!")}
-                            </a>
+                            </span>
                         </div>
                     </form>
                 </div>

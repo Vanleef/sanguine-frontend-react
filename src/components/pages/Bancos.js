@@ -195,6 +195,7 @@ const Bancos = () => {
     const [listUf, setListUf] = React.useState([]);
     // const [listaBancosUf, setlistaBancosUf] = React.useState(banksList);
     const [listaBancosUf, setlistaBancosUf] = React.useState([]);
+    const [banksUf, setbanksUf] = React.useState([]);
 
 
     function loadUf() {
@@ -215,11 +216,11 @@ const Bancos = () => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                updateLista(data);
+                updateListaBancos(data);
             });
     }
 
-    function updateLista(selectedState) {
+    function updateListaBancos(selectedState) {
         let novaLista = [];
         
         if(typeof allBanks !== 'undefined' && allBanks.length > 0) novaLista = allBanks.filter(item => item.estado === selectedState.sigla);
@@ -231,9 +232,41 @@ const Bancos = () => {
         console.log("A nova lista é: " + novaLista);
     }
 
+    function updateListaUF() {
+        let novaLista = [];
+
+        if(allBanks){
+            allBanks.map((item, index) => {
+                novaLista.push(item.estado)
+            });
+        } else {
+            example.map((item, index) => {
+                novaLista.push(item.estado)
+            });
+        }
+
+        novaLista = Array.from(new Set(novaLista));
+    
+        setbanksUf(novaLista);
+
+        novaLista = [];
+
+        listUf.map((item, index) => {
+            banksUf.map((state, i) => {
+                if(item.sigla === state) novaLista.push(item);
+            });
+        });
+
+        setListUf(novaLista);
+    }
+
     React.useEffect(() => {
-        loadUf();
+        loadUf()
     }, []);
+
+    // React.useEffect(() => {
+    //     updateListaUF();
+    // }, [banksUf]);
 
     function updateUF(a) {
         setUf(a);

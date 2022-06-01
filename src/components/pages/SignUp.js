@@ -36,18 +36,17 @@ const SignUp = () => {
       setError("Os e-mails não são iguais");
       return;
     }
+    
+    const userData = { 'nome': nome, 'email': email, 'cidade': cidade, 'estado': estado, 'tipo_sanguineo': tipo_sanguineo, 'genero': genero, 'senha': password };
 
-    const res = signup(email, password);
+    const res = signup(userData);
 
     if (res) {
       setError(res);
       return;
     }
 
-    const userData = { 'nome': nome, 'email': email, 'cidade': cidade, 'estado': estado, 'tipo_sanguineo': tipo_sanguineo, 'genero': genero, 'senha': password };
-
-    //createUser(userData);
-
+    alert("Usuário cadatrado com sucesso!");
     navigate("/");
   };
 

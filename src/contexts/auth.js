@@ -22,13 +22,15 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const signin = (email, password) => {
+  const signin = (userData) => {
     const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+    const email = userData.email;
+    const password = userData.senha;
 
     const hasUser = usersStorage?.filter((user) => user.email === email);
 
     if (hasUser?.length) {
-      if (hasUser[0].email === email && hasUser[0].password === password) {
+      if (hasUser[0].email === email && hasUser[0].senha === password) {
         const token = Math.random().toString(36).substring(2);
         localStorage.setItem("user_token", JSON.stringify({ email, token }));
         setUser({ email, password });
@@ -53,9 +55,9 @@ export const AuthProvider = ({ children }) => {
     let newUser;
 
     if (usersStorage) {
-      newUser = [...usersStorage, { userData}];
+      newUser = [...usersStorage,  userData];
     } else {
-      newUser = [{ userData}];
+      newUser = [ userData];
     }
 
     try {
@@ -65,6 +67,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     localStorage.setItem("users_bd", JSON.stringify(newUser))
+    signin(newUser);
 
     return alert("Cadastro realizado com sucesso");
   };

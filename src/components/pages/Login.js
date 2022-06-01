@@ -18,8 +18,10 @@ function Login() {
         setError("Preencha todos os campos");
         return;
       }
+
+      const userData = {"email": email, "senha": password};
   
-      const res = signin(email, password);
+      const res = signin(userData);
   
       if (res) {
         setError(res);

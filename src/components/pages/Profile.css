@@ -1,0 +1,145 @@
+#root {
+    height: 100%;
+}
+.page {
+    display: flex;
+    height: 80%;
+}
+
+.profile-container {
+    word-wrap: break-word;
+    margin: auto;
+    margin-top: 60px;
+    outline: auto;
+    width: 70%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    overflow-y: hidden;
+    background-color: rgba(0, 0, 0, 0.186);
+}
+
+.title {
+    color: rgb(0, 0, 0);
+    position: relative;
+    align-self: center;
+    font-weight: 600;
+    line-height: 1;
+    text-shadow:0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+.user-info {
+    color: rgb(0, 0, 0);
+    margin: auto;
+    text-align: left;
+    margin-top: 20px;
+    width: 50%;
+    position: relative;
+    line-height: 350%;
+}
+
+.user-label {
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow:0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 2px 0 #b9b9b9,
+    0 3px 0 #aaa,
+    0 3px 1px rgba(0,0,0,.1),
+    0 0 3px rgba(0,0,0,.1),
+    0 0px 1px rgba(0,0,0,.3),
+    0 1px 3px rgba(0,0,0,.2),
+    0 3px 5px rgba(0,0,0,.25),
+    0 50px 50px rgba(0,0,0,.2),
+    0 10px 10px rgba(0,0,0,.15);
+}
+
+.user-data {
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    outline: auto;
+    width: 50%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: -10px;
+}
+
+.date-container {
+    color: rgb(0, 0, 0);
+    margin-top: 70px;
+
+}
+
+.date-title {
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow:0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 2px 0 #b9b9b9,
+    0 3px 0 #aaa,
+    0 3px 1px rgba(0,0,0,.1),
+    0 0 3px rgba(0,0,0,.1),
+    0 0px 1px rgba(0,0,0,.3),
+    0 1px 3px rgba(0,0,0,.2),
+    0 3px 5px rgba(0,0,0,.25),
+    0 50px 50px rgba(0,0,0,.2),
+    0 10px 10px rgba(0,0,0,.15);
+}
+
+.date-picker {
+    position: relative;
+    margin: auto;
+    font-size: 30px;
+}
+
+.buttons {
+    margin: auto;
+    margin-top: 50px;
+    display: inline-flex;
+    
+}
+
+.cancel .btn {
+    background-color: rgb(106, 106, 106);
+    margin: auto;
+    margin-right: 35px;
+}
+
+.cancel .btn:hover {
+    background-color: rgb(218, 218, 218);
+    color: rgb(10, 10, 10);
+}
+
+.salvar .btn {
+    background-color: #c93636;
+    margin: auto;
+    margin-left: 35px;
+}
+
+.salvar .btn:hover {
+    background-color: white;
+    color: #c93636;
+}
+
+.salvar .btn:disabled {
+    background-color: rgba(128, 128, 128, 0);
+    color: rgb(101, 101, 101);
+    opacity: 0.7;
+    box-shadow: 0 0px 10px rgba(255, 255, 255, 0);
+    cursor: default;
+}

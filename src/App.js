@@ -6,6 +6,7 @@ import SignUp from './components/pages/SignUp';
 import Login from './components/pages/Login';
 import Bancos from './components/pages/Bancos';
 import Sobre from './components/pages/Sobre';
+import Profile from './components/pages/Profile';
 import { AuthProvider } from "./contexts/auth";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useAuth from "./hooks/useAuth";
@@ -27,8 +28,9 @@ function App() {
             <Route path='/' element={ <Home/>} />
             <Route path='/login' element={<Login />} />
             <Route path='/sign-up' element={<SignUp />} />
-            <Route path='/bancos' element={<Private Item={Bancos} />} />
+            <Route path='/bancos' element={<Bancos />} />
             <Route path='/sobre' element={<Sobre />} />
+            <Route path='/perfil' element={<Profile />} />
             <Route path='*' element={ <Home/>} />
           </Routes>
         </Router>

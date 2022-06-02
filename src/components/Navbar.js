@@ -44,6 +44,12 @@ const Navbar = ()=> {
     );
   }
 
+  const ProfileButton = () => {
+    return (
+    <Link to='/perfil'> {button && <Button buttonStyle='btn--outline'>Perfil</Button>}</Link>
+    );
+  }
+
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -111,7 +117,8 @@ const Navbar = ()=> {
               </Link>
             </li>
           </ul>
-          {Private(LogoutButton, LoginButton)}
+          {Private(ProfileButton, LoginButton)}
+          {Private(LogoutButton, null)}
           
         </div>
       </nav>

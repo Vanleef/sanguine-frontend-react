@@ -313,7 +313,7 @@ const BancoItens = ({ item }) => {
             <h5>{item.estado}</h5>
             <h5>{item.cidade}</h5>
             <h5>{item.endereco}</h5>
-            <h6>Sangue extraído em: {item.data_extracao}</h6>
+            <h6>Dados extraídos em: {item.data_extracao}</h6>
         </div>
     )
 }

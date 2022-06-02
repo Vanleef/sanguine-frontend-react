@@ -101,9 +101,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const authToken = () =>{
-    const localToken = localStorage.getItem("user_token");
-    let res = [].concat(...localToken).map(({token})=>token);
-    return userToken || res[0];
+    return userToken;
   }
 
 

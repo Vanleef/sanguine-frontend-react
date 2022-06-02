@@ -23,8 +23,11 @@ const Profile = () => {
         "token": "eyJhbGciOiJIUzUxMiIsImlhdCI6MTY1NDE3MDQ5MCwiZXhwIjoxNjU0MTcxMDkwfQ.eyJpZCI6NX0.LZn77_mS7FKG6p6Hd4W_xjbcURtS6EIIrfX84Qe_-4YmnG0oWopYOar0nDYIC6gEmGe23QAwlxAHvUTyoheqPQ"
     }
 
+    const {authToken} = useAuth();
+    
     useEffect(() => {
-        getData()
+        const userToken = authToken();
+        if(userToken) getData(userToken.token);
     }, [])
 
     useEffect(() => {
@@ -34,14 +37,14 @@ const Profile = () => {
         }
     }, [userProfile])
 
-    const getData = async () => {
+    const getData = async (token) => {
         const url = 'http://localhost:8000/user/';
         await fetch(
             url,
             {
                 method:'GET',
                 headers: {
-                    'Authorization': 'Basic ' + btoa(`${user.token}:`)
+                    'Authorization': 'Basic ' + btoa(`${token}:`)
                 }
             }
         )
@@ -56,13 +59,14 @@ const Profile = () => {
     }
 
     const salvar = () => {
+        const userToken = authToken();
         const url = 'http://localhost:8000/user/';
         fetch(
             url,
             {
                 method:'PATCH',
                 headers: {
-                    'Authorization': 'Basic ' + btoa(`${user.token}:`),
+                    'Authorization': 'Basic ' + btoa(`${userToken. token}:`),
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -125,7 +129,7 @@ const Profile = () => {
             </div>
             <div className="date-container">
               <p className="date-title">Data da Última Doação</p>
-              <DatePicker className="date-picker"
+              <DatePicker className="date-selector"
                 selected={donateDate}
                 onChange={date => {
                     setDonateDate(date)
@@ -138,13 +142,15 @@ const Profile = () => {
                 showYearDropdown
                 scrollableYearDropdown
                 yearDropdownItemNumber={90}
+                showPopperArrow={false}
                 dropdownMode="scroll"
                 popperClassName="date-popper"
-                popperPlacement="auto"
+                popperPlacement="top-end"
+                withPortal
                 popperModifiers={{
                   offset: {
                     enabled: true,
-                    offset: '5px, 10px'
+                    offset: '5px, 5px'
                   },
                   preventOverflow: {
                     enabled: true,

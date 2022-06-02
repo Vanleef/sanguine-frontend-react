@@ -20,8 +20,8 @@ const SignUp = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [emailConf, setEmailConf] = useState("");
-  const [cidade, setCidade] = useState("");
-  const [estado, setEstado] = useState("");
+  const [cidade, setCidade] = useState("Acrelândia");
+  const [estado, setEstado] = useState("AC");
   const [dataNasc, setDataNasc] = useState(new Date('01/01/2003'));
   const [dataUltimaDoacao, setDataUltimaDoacao] = useState(new Date('01/06/2022'));
   const [tipo_sanguineo, setTipo_sanguineo] = useState("A+");

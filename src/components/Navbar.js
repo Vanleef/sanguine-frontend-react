@@ -8,7 +8,8 @@ import useAuth from "../hooks/useAuth";
 const Navbar = ()=> {
 
   const {signed, signout} = useAuth();
-  const [isLogged, setIsLogged] = useState();
+  const {user} = useAuth();
+  const [, setIsLogged] = useState();
   
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -67,7 +68,7 @@ const Navbar = ()=> {
   if (signed) {
     setIsLogged(signed);
   }
-  }, [signed, isLogged]);
+  }, [signed]);
 
   window.addEventListener('resize', showButton);
 
@@ -99,7 +100,7 @@ const Navbar = ()=> {
                 Início
               </Link>
             </li>
-            {Private(Bancos, null)}
+            {<Bancos/>}
             <li className='nav-item'>
               <Link
                 to='/sobre'

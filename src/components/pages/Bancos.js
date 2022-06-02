@@ -194,8 +194,9 @@ const Bancos = () => {
     const [uf, setUf] = React.useState('AC');
     const [listUf, setListUf] = React.useState([]);
     // const [listaBancosUf, setlistaBancosUf] = React.useState(banksList);
-    const [listaBancosUf, setlistaBancosUf] = React.useState([]);
+    const [listaBancosUf, setlistaBancosUf] = React.useState(allBanks || example);
     const [banksUf, setbanksUf] = React.useState([]);
+    const [updateListaFlag, setUpdateListaFlag] = React.useState(1);
 
 
     function loadUf() {
@@ -206,6 +207,7 @@ const Bancos = () => {
             .then(data => {
                 data.sort((a, b) => a.nome.localeCompare(b.nome));
                 setListUf([...data]);
+                setUpdateListaFlag(2);
             });
     }
 
@@ -233,23 +235,8 @@ const Bancos = () => {
     }
 
     function updateListaUF() {
+
         let novaLista = [];
-
-        if(allBanks){
-            allBanks.map((item, index) => {
-                novaLista.push(item.estado)
-            });
-        } else {
-            example.map((item, index) => {
-                novaLista.push(item.estado)
-            });
-        }
-
-        novaLista = Array.from(new Set(novaLista));
-    
-        setbanksUf(novaLista);
-
-        novaLista = [];
 
         listUf.map((item, index) => {
             banksUf.map((state, i) => {
@@ -260,13 +247,31 @@ const Bancos = () => {
         setListUf(novaLista);
     }
 
+    const fillBanksUF = ()=> {
+        let novaLista = [];
+
+        listaBancosUf.map((item, index) => {
+            novaLista.push(item.estado)
+        })
+
+        novaLista = Array.from(new Set(novaLista));
+        
+        setbanksUf(novaLista);
+        updateListaUF();
+    }
+
     React.useEffect(() => {
-        loadUf()
+        loadUf();
     }, []);
 
-    // React.useEffect(() => {
-    //     updateListaUF();
-    // }, [banksUf]);
+    React.useEffect(() => {
+        setlistaBancosUf(allBanks || example);
+        setUpdateListaFlag(3);
+    }, [allBanks]);
+
+    React.useEffect(() => {
+        fillBanksUF();
+    }, [updateListaFlag]);
 
     function updateUF(a) {
         setUf(a);

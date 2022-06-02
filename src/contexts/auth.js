@@ -5,35 +5,58 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [userDetail, setUserDetail] = useState();
+  const [userToken, setUserToken] = useState();
+  
 
   useEffect(() => {
-    const userToken = localStorage.getItem("user_token");
-    const usersStorage = localStorage.getItem("users_bd");
+      const localToken = localStorage.getItem("user_token");
+      const usersStorage = localStorage.getItem("users_bd");
+    
+      if(userToken) {
+        try {
+          api.getUserDetail(userToken.token).then(response=>{ setUserDetail(response)});
 
-    if (userToken && usersStorage) {
-      const hasUser = JSON.parse(usersStorage)?.filter(
-        (user) => user.email === JSON.parse(userToken).email
-      );
-
-      if (hasUser) {
-        setUser(hasUser[0]);
-       }
-
+          if (userDetail) {
+            setUser(userDetail[0]);
+           }
+           
+        } catch (error) {
+        }
+       
+      } else if(localToken && usersStorage) {
+        const hasUser = JSON.parse(usersStorage)?.filter((user) => user.email === JSON.parse(localToken).email);
+        
+        if (hasUser) {
+          setUser(hasUser[0]);
+         }
     }
+   
+    
   }, []);
+
+  useEffect(()=>{
+    if(userToken) {
+      if(user){
+        const email = user.email;
+        localStorage.setItem("user_token", JSON.stringify({ email, userToken }));
+      }
+    }
+  }, [userToken]);
+
+
 
   const signin = (userData) => {
     const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
     const email = userData.email;
     const password = userData.senha;
-
-    const hasUser = usersStorage?.filter((user) => user.email === email);
+    
+    let hasUser = userDetail || usersStorage?.filter((user) => user.email === email);
 
     if (hasUser?.length) {
       if (hasUser[0].email === email && hasUser[0].senha === password) {
-        const token = Math.random().toString(36).substring(2);
-        localStorage.setItem("user_token", JSON.stringify({ email, token }));
-        setUser({ email, password });
+        api.getAuth(email, password).then(response=>{ setUserToken(response)})
+        setUser(hasUser[0]);
         return alert("Login realizado com sucesso");
       } else {
         return "E-mail ou senha incorretos";
@@ -46,7 +69,7 @@ export const AuthProvider = ({ children }) => {
   const signup = (userData) => {
     const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
 
-    const hasUser = usersStorage?.filter((user) => user.email === userData.email);
+    let hasUser = userDetail || usersStorage?.filter((user) => user.email === userData.email);
 
     if (hasUser?.length) {
       return "Já tem uma conta com esse E-mail";
@@ -66,7 +89,7 @@ export const AuthProvider = ({ children }) => {
       console.log("A requisição no backend falhou: " + error);
     }
 
-    localStorage.setItem("users_bd", JSON.stringify(newUser))
+    localStorage.setItem("users_bd", JSON.stringify(newUser));
     signin(newUser);
 
     return alert("Cadastro realizado com sucesso");

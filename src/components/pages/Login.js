@@ -13,7 +13,8 @@ function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
+        e.preventDefault();
       if (!email | !password) {
         setError("Preencha todos os campos");
         return;
@@ -67,7 +68,7 @@ function Login() {
                                 className='btns'
                                 buttonStyle='btn--outline'
                                 buttonSize='btn--large'
-                                onClick={handleLogin}
+                                onClick={e=> handleLogin(e)}
                             >
                                 Entrar
                             </Button>

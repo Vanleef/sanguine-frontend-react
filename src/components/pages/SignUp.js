@@ -12,12 +12,18 @@ import useAuth from "../../hooks/useAuth";
 registerLocale('ptBR', ptBR);
 
 const SignUp = () => {
+  const listSangue = ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"];
+  const [uf, setUf] = useState('AC');
+  const [listUf, setListUf] = useState([]);
+  const [listCity, setListCity] = useState([]);
+
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [emailConf, setEmailConf] = useState("");
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
-  const [dataNasc, setDataNasc] = useState(new Date('01/01/2021'));
+  const [dataNasc, setDataNasc] = useState(new Date('01/01/2003'));
+  const [dataUltimaDoacao, setDataUltimaDoacao] = useState(new Date('01/06/2022'));
   const [tipo_sanguineo, setTipo_sanguineo] = useState("A+");
   const [genero, setGenero] = useState("Masculino");
   const [password, setPassword] = useState("");
@@ -28,7 +34,8 @@ const SignUp = () => {
 
   const { signup } = useAuth();
 
-  const handleSignup = () => {
+  const handleSignup = (e) => {
+    e.preventDefault();
     if (!email | !emailConf | !password) {
       setError("Preencha todos os campos");
       return;
@@ -37,7 +44,9 @@ const SignUp = () => {
       return;
     }
     
-    const userData = { 'nome': nome, 'email': email, 'cidade': cidade, 'estado': estado, 'tipo_sanguineo': tipo_sanguineo, 'genero': genero, 'senha': password };
+    const userData = { 'nome': nome, 'email': email, 'cidade': cidade, 'estado': estado,
+     'data_nascimento': dataNasc.toISOString().substring(0, 10), 'data_ultima_doacao': dataUltimaDoacao.toISOString().substring(0, 10), 
+     'tipo_sanguineo': tipo_sanguineo, 'genero': genero, 'senha': password };
 
     const res = signup(userData);
 
@@ -50,12 +59,6 @@ const SignUp = () => {
     navigate("/");
   };
 
-
-  const listSangue = ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"];
-  const [uf, setUf] = useState('AC');
-  const [listUf, setListUf] = useState([]);
-  const [listCity, setListCity] = useState([]);
-
   function loadUf() {
     let url = 'https://servicodados.ibge.gov.br/';
     url = url + 'api/v1/localidades/estados';
@@ -64,6 +67,7 @@ const SignUp = () => {
       .then(data => {
         data.sort((a, b) => a.nome.localeCompare(b.nome));
         setListUf([...data]);
+        setUf(listUf[0]);
       });
   }
   function loadCity(id) {
@@ -74,6 +78,7 @@ const SignUp = () => {
       .then(data => {
         data.sort((a, b) => a.nome.localeCompare(b.nome));
         setListCity([...data]);
+        setCidade(listUf[0]);
       });
   }
 
@@ -163,7 +168,7 @@ const SignUp = () => {
                 ))}
               </select>
               <div>
-                <select value={cidade} onChange={e => updateCidade(e.target.value)}>
+                <select value={cidade} defaultOption={listUf[0]} onChange={e => updateCidade(e.target.value)}>
                   {listCity.map((a, b) => (
                     <option value={a.sigla}>{a.nome}</option>
                   ))}
@@ -175,9 +180,37 @@ const SignUp = () => {
               <DatePicker className="date-picker"
                 selected={dataNasc}
                 onChange={date => setDataNasc(date)}
-                placeholderText='Data de Nascimento:'
                 dateFormat={'dd/MM/yyyy'}
                 dateFormatCalendar="MMMM"
+                maxDate= {new Date()}
+                locale={'ptBR'}
+                showYearDropdown
+                scrollableYearDropdown
+                yearDropdownItemNumber={90}
+                dropdownMode="scroll"
+                popperClassName="date-popper"
+                popperPlacement="auto"
+                popperModifiers={{
+                  offset: {
+                    enabled: true,
+                    offset: '5px, 10px'
+                  },
+                  preventOverflow: {
+                    enabled: true,
+                    escapeWithReference: false, // force popper to stay in viewport (even when input is scrolled out of view)
+                    boundariesElement: 'viewport'
+                  }
+                }}
+              />
+            </div>
+            <div>
+              <h4 className="date-header">Data da sua última doação</h4>
+              <DatePicker className="date-picker"
+                selected={dataUltimaDoacao}
+                onChange={date => setDataUltimaDoacao(date)}
+                dateFormat={'dd/MM/yyyy'}
+                dateFormatCalendar="MMMM"
+                maxDate= {new Date()}
                 locale={'ptBR'}
                 showYearDropdown
                 scrollableYearDropdown
@@ -219,7 +252,7 @@ const SignUp = () => {
                 className='btns'
                 buttonStyle='btn--outline'
                 buttonSize='btn--large'
-                onClick={handleSignup}
+                onClick={e=> handleSignup(e)}
               >
                 Cadastre-se
               </Button>

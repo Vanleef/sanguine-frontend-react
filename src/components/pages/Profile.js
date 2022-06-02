@@ -8,21 +8,14 @@ const Profile = () => {
 
     const [userProfile, setUserProfile] = useState({});
     const [donateDate, setDonateDate] = useState(new Date());
-    
-    //const {user} = useAuth();
-    const user = {
-        "nome": "insomnia2",
-        "email": "insomnia2@email.com",
-        "cidade": "Recife",
-        "estado": "PE",
-        "tipo_sanguineo": "O+",
-        "genero": "Masculino",
-        "senha": "p4ssw0rd",
-        "token": "eyJhbGciOiJIUzUxMiIsImlhdCI6MTY1NDE0Mzg2OSwiZXhwIjoxNjU0MTQ0NDY5fQ.eyJpZCI6NX0.koZjpHINCwu7BwFHF01fz94HV-t513vOfpR4HA3bB3zzkI7zENY_lCCGNZLa9a9r7DUBhsRwKhA4vHBW3_o_Fg"
-    }
 
+    const {authToken} = useAuth();
+  
     useEffect(() => {
-        getData()
+            const userToken = authToken();
+
+            if(userToken) getData(userToken.token);
+        
     }, [])
 
     useEffect(() => {
@@ -32,14 +25,14 @@ const Profile = () => {
         }
     }, [userProfile])
 
-    const getData = async () => {
+    const getData = async (token) => {
         const url = 'http://localhost:8000/user/';
         await fetch(
             url,
             {
                 method:'GET',
                 headers: {
-                    'Authorization': 'Basic ' + btoa(`${user.token}:`)
+                    'Authorization': 'Basic ' + btoa(`${token}:`)
                 }
             }
         )
@@ -54,13 +47,14 @@ const Profile = () => {
     }
 
     const salvar = () => {
+        const userToken = authToken();
         const url = 'http://localhost:8000/user/';
         fetch(
             url,
             {
                 method:'PATCH',
                 headers: {
-                    'Authorization': 'Basic ' + btoa(`${user.token}:`),
+                    'Authorization': 'Basic ' + btoa(`${userToken.token}:`),
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({

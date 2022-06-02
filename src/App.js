@@ -11,11 +11,14 @@ import { AuthProvider } from "./contexts/auth";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useAuth from "./hooks/useAuth";
 
-const Private = ({ Item }) => {
-  const { signed } = useAuth();
 
-  return signed > 0 ? <Item /> : <Login />;
-};
+  const Private = (Item, Item2) => {
+    const signed = useAuth();
+    if(Item==null) return signed ? <></> : <Item2/>;
+    if(Item2==null) return signed ? <Item/> : <></>;
+
+    return signed ? <Item/> : <Item2/>;
+  };
 
 
 function App() {
@@ -27,7 +30,7 @@ function App() {
           <Routes>
             <Route path='/' element={ <Home/>} />
             <Route path='/login' element={<Login />} />
-            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/sign-up' element={<SignUp/>} />
             <Route path='/bancos' element={<Bancos />} />
             <Route path='/sobre' element={<Sobre />} />
             <Route path='/perfil' element={<Profile />} />

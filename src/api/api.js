@@ -24,8 +24,8 @@ export async function createUser(userData) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData)
-      }).then((response) => response.json())
-      .then((data) => res = data);
+      }).then((response) => response.json()
+      ).then((data) => res = data);
     }
     catch (error) {
       console.log(error);
@@ -42,8 +42,9 @@ export async function createUser(userData) {
           'Authorization': 'Basic ' + btoa(`${token}:`),
            'Content-Type': 'application/json',
         }
-      }).then((response) => response.json())
-      .then((data) => res = data);
+      }).then((response) =>{ if(response.status === 401) return;
+      else response.json()}
+      ).then((data) => res = data);
     }
     catch (error) {
       console.log(error);

@@ -100,10 +100,16 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user_token");
   };
 
+  const authToken = () =>{
+    const localToken = localStorage.getItem("user_token");
+    let res = [].concat(...localToken).map(({token})=>token);
+    return userToken || res[0];
+  }
+
 
   return (
     <AuthContext.Provider
-      value={{ user, signed: !!user, signin, signup, signout }}
+      value={{ user, signed: !!user, signin, signup, signout, authToken }}
     >
       {children}
     </AuthContext.Provider>
